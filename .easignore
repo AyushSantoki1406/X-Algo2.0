@@ -1,0 +1,24 @@
+# Ignore dependencies (they will be reinstalled during the build)
+node_modules
+yarn.lock
+package-lock.json
+
+# Ignore system files
+.git
+*.log
+*.DS_Store
+
+# Ignore build artifacts
+build
+dist
+.expo
+.eas
+android
+ios
+
+# Ignore images/videos that aren't needed for the build
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.gif

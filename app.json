@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "X-Algo",
+    "slug": "X-Algo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/darklogo.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/darklogo.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#232323"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.yourdomain.xalgo",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/darklogo.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.CAMERA"
+      ]
+    },
+    "plugins": [
+      "expo-barcode-scanner",
+      "expo-router"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "0f5eb582-7995-4cfc-9431-c7ffe6d00455"
+      }
+    }
+  }
+}
