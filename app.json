@@ -13,7 +13,11 @@
       "backgroundColor": "#232323"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourdomain.xalgo",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.yourdomain.xalgo",
@@ -22,6 +26,7 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [
+        "android.permission.CAMERA",
         "android.permission.CAMERA"
       ]
     },
@@ -36,6 +41,12 @@
       "eas": {
         "projectId": "0f5eb582-7995-4cfc-9431-c7ffe6d00455"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/0f5eb582-7995-4cfc-9431-c7ffe6d00455"
     }
   }
 }

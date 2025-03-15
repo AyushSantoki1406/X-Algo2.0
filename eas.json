@@ -10,7 +10,8 @@
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
-      }
+      },
+      "node": "20.19.0"
     }
   }
 }
