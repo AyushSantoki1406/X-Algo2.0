@@ -26,7 +26,6 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [
-        "android.permission.CAMERA",
         "android.permission.CAMERA"
       ]
     },
@@ -34,19 +33,20 @@
       "expo-barcode-scanner",
       "expo-router"
     ],
-    "extra": {
-      "router": {
-        "origin": false
-      },
-      "eas": {
-        "projectId": "0f5eb582-7995-4cfc-9431-c7ffe6d00455"
-      }
-    },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
       "url": "https://u.expo.dev/0f5eb582-7995-4cfc-9431-c7ffe6d00455"
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "f34fe45c-e956-4d5c-9de5-f2deeba24fb3"
+      }
+    },
+    "owner": "ayush14062"
   }
 }

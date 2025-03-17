@@ -14,8 +14,17 @@ import ToastManager from "toastify-react-native";
 import Toast from "react-native-toast-message";
 import React from "react";
 import { PersistGate } from "redux-persist/integration/react";
+import ActiveTrade from "./app/Screen/Order/ActiveTrade";
+import LiveTrade from "./app/Screen/Order/LiveTrade";
+import PaperTrade from "./app/Screen/PaperTrade/PaperTrade";
+import Deployed from "./app/Screen/Strategies/Deployed";
+import Marketplace from "./app/Screen/Strategies/Marketplace";
+import Subscribed from "./app/Screen/Strategies/Subscribed";
 
 const Stack = createStackNavigator();
+if (__DEV__) {
+  console.log("Running in Debug Mode");
+}
 
 export default function App() {
   return (
@@ -42,7 +51,10 @@ export default function App() {
             <Stack.Screen
               name="Dashboard"
               component={Dashboard}
-              options={{ headerShown: false }}
+              options={{
+                headerShown: false,
+                cardStyle: { paddingTop: 0 }, // Ensure no top padding
+              }}
             />
             <Stack.Screen
               name="ScanScreen"
@@ -62,6 +74,36 @@ export default function App() {
             <Stack.Screen
               name="StrategiesTabs"
               component={StrategiesTabs}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ActiveTrade"
+              component={ActiveTrade}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="LiveTrade"
+              component={LiveTrade}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="PaperTrade"
+              component={PaperTrade}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Deployed"
+              component={Deployed}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Marketplace"
+              component={Marketplace}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Subscribed"
+              component={Subscribed}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
