@@ -160,7 +160,7 @@ const MultiCalendar: React.FC<MultiCalendarProps> = ({
         <Picker
           selectedValue={selectedMonth}
           onValueChange={(value) => handleDateChange(value.toString(), "month")}
-          style={[styles.picker, darkMode && styles.darkPicker]}
+          style={[styles.picker, darkMode && styles.darkPicker, { margin: 10 }]}
         >
           {Array.from({ length: 12 }, (_, i) => (
             <Picker.Item
@@ -173,7 +173,7 @@ const MultiCalendar: React.FC<MultiCalendarProps> = ({
         <Picker
           selectedValue={selectedYear}
           onValueChange={(value) => handleDateChange(value.toString(), "year")}
-          style={[styles.picker, darkMode && styles.darkPicker]}
+          style={[styles.picker, darkMode && styles.darkPicker, { margin: 10 }]}
         >
           {yearOptions.map((year) => (
             <Picker.Item key={year} label={year.toString()} value={year} />
@@ -241,7 +241,13 @@ const MultiCalendar: React.FC<MultiCalendarProps> = ({
         <View>
           <View>
             <View style={styles.ghjkxcvbnm}>
-              <View style={styles.statItem}>
+              <View
+                style={{
+                  position: "relative",
+                  alignItems: "center",
+                  marginBottom: 10,
+                }}
+              >
                 <ProgressCircle
                   progress={accuracy / 100}
                   size={60}
@@ -255,9 +261,17 @@ const MultiCalendar: React.FC<MultiCalendarProps> = ({
                   }
                   unfilledColor={darkMode ? "#444" : "#ddd"}
                   borderWidth={0}
-                  showsText={true}
-                  textStyle={mergedTextStyle} // Use the merged style object
+                  showsText={false} // Disable default text
                 />
+                <Text
+                  style={[
+                    styles.progressText,
+                    darkMode && styles.darkText,
+                    { position: "absolute", top: 20 },
+                  ]}
+                >
+                  {Math.round(accuracy)}%
+                </Text>
                 <Text style={[styles.statLabel, darkMode && styles.darkText]}>
                   Accuracy
                 </Text>
@@ -323,11 +337,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginBottom: 20,
     justifyContent: "space-between",
-    backgroundColor: "red",
     borderRadius: 8,
     padding: 5,
-    borderWidth: 1,
-    borderColor: "#ddd",
   },
   picker: {
     height: 40,
@@ -336,6 +347,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 8,
     paddingHorizontal: 10,
+    margin: 10, // Moved inline margin here
+    borderWidth: 0, // Remove all borders
+    borderBottomWidth: 2, // Add bottom border
+    borderBottomColor: "#ccc", // Light gray bottom border
+    fontSize: 16, // Increase font size for better readability
   },
   darkPicker: {
     color: "#fff",
@@ -388,6 +404,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#444",
     color: "#fff",
     padding: 5,
+
     borderRadius: 4,
   },
   darkHeaderCell: {
