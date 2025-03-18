@@ -209,7 +209,10 @@ const DashboardAngel: React.FC<DashboardAngelProps> = ({
   }, []);
 
   return (
-    <ScrollView style={[styles.container, styles.deskbordContainer]}>
+    <ScrollView
+      style={[styles.container, styles.deskbordContainer]}
+      contentContainerStyle={styles.scrollContentContainer}
+    >
       {brokerInfo.map((item, index) => {
         const clientId =
           item?.userData?.data?.clientcode ||
@@ -271,7 +274,6 @@ const DashboardAngel: React.FC<DashboardAngelProps> = ({
                 </Text>
               </View>
             </View>
-            {/* )} */}
 
             <View style={[styles.statsCard, darkMode && styles.cdaacceecaec]}>
               <View style={[styles.statsRow]}>
@@ -409,44 +411,47 @@ const DashboardAngel: React.FC<DashboardAngelProps> = ({
 };
 
 const { width } = Dimensions.get("window");
-const isSmallScreen = width <= 480; // max-width: 30em
-const isMobile = width <= 876; // max-width: 876px
+const isSmallScreen = width <= 480;
+const isMobile = width <= 876;
 
 const styles = StyleSheet.create({
-  // DashboardAngel styles
   container: {
     flex: 1,
+    marginTop: 10,
   },
   deskbordContainer: {
     flexDirection: "column",
-    paddingHorizontal: 10, // .deskbord padding: 0 1.5em
+    paddingHorizontal: 10,
+  },
+  scrollContentContainer: {
+    paddingBottom: 20, // Add padding to ensure content isn't cut off at the bottom
   },
   statsContainer: {
     marginVertical: 10,
     padding: 10,
-    borderWidth: 1,
-    borderColor: "#eee",
-    borderRadius: 8, // .yqrgk border-radius: 0.5em
-    marginTop: isSmallScreen ? 10 : 10, // .yqrgk margin-top: 5em/6em
+    borderWidth: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+    borderRadius: 8,
+    marginTop: isSmallScreen ? 10 : 10,
     ...(isSmallScreen && {
-      marginLeft: 1.6, // .yqrgk margin-left: 0.1em
-      marginRight: 1.6, // .yqrgk margin-right: 0.1em
+      marginLeft: 1.6,
+      marginRight: 1.6,
     }),
-    shadowColor: "#000", // .yqrgk box-shadow
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
   },
   accountInfo: {
-    borderRadius: 16, // .nays border-radius: 1em
-    shadowColor: "#3C4043", // .nays box-shadow
+    borderRadius: 16,
+    shadowColor: "#3C4043",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.3,
     shadowRadius: 2,
     elevation: 2,
   },
-
   dropdownHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -463,12 +468,13 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   statsCard: {
-    padding: 16, // .OrderPlace padding: 1em
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 16, // .OrderPlace border-radius: 1em
-    marginTop: 10, // .OrderPlace margin-top: 3em
-    shadowColor: "#000", // .OrderPlace box-shadow
+    padding: 16,
+    borderWidth: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
+    borderRadius: 16,
+    marginTop: 5,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.15,
     shadowRadius: 15,
@@ -478,7 +484,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    alignContent: "flex-end", // .qwe align-content: flex-end
+    alignContent: "flex-end",
   },
   statItem: {
     width: "48%",
@@ -490,31 +496,47 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   strategySection: {
-    marginTop: 10, // .jahgs margin-top: 3em
-    borderRadius: 16, // .jahgs border-radius: 1em
-    shadowColor: "#000", // .jahgs box-shadow
+    marginTop: 10,
+    borderRadius: 16,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.15,
     shadowRadius: 15,
     elevation: 5,
   },
   strategySelector: {
-    marginBottom: 10,
-    borderRadius: 16, // .agvs border-radius: 1em
-    shadowColor: "#3C4043", // .agvs box-shadow
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.3,
-    shadowRadius: 2,
-    elevation: 2,
+    // marginBottom: 10,
+    // borderRadius: 16,
+    // shadowColor: "#3C4043",
+    // shadowOffset: { width: 0, height: 1 },
+    // shadowOpacity: 0.3,
+    // shadowRadius: 2,
+    // elevation: 2,
+    color: "#000",
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    margin: 10, // Moved inline margin here
+    borderWidth: 0, // Remove all borders
+    borderBottomWidth: 2, // Add bottom border
+    borderBottomColor: "#ccc", // Light gray bottom border
+    fontSize: 16,
   },
   picker: {
     height: 40,
     width: "100%",
     color: "#000",
+    backgroundColor: "#fff",
+    borderWidth: 0,
+    borderBottomWidth: 2,
+    borderBottomColor: "#ccc",
+    fontSize: 16,
+    paddingHorizontal: 10,
   },
   darkPicker: {
     color: "#fff",
-    backgroundColor: "#444",
+    backgroundColor: "#333",
+    borderBottomColor: "#666",
   },
   sheetItem: {
     marginVertical: 5,
@@ -531,21 +553,20 @@ const styles = StyleSheet.create({
     color: "red",
   },
   greenText: {
-    color: "lime", // .green color: lime
+    color: "lime",
   },
   darkText: {
     color: "#fff",
   },
   red: {
-    color: "red", // .red color: red
+    color: "red",
   },
   green: {
-    color: "lime", // .green color: lime
+    color: "lime",
   },
-  // Dark mode styles
   cdaacceecaec: {
-    marginTop: 48, // 3em
-    borderRadius: 16, // 1em
+    marginTop: 10,
+    borderRadius: 16,
     shadowColor: "#C8C8C8",
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.1,
@@ -555,63 +576,6 @@ const styles = StyleSheet.create({
   vgjsdbhcd: {
     backgroundColor: "#161a1d",
     borderRadius: 8,
-  },
-
-  // MultiCalendar styles (integrated)
-  calendar: {
-    borderRadius: 8,
-    padding: 10,
-    width: "100%",
-  },
-  calendarContainer: {
-    marginBottom: 40,
-    flexDirection: "column",
-  },
-  calendarFlex: {
-    flexDirection: "column",
-  },
-  calendarHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 0.8, // gap: 0.8px
-  },
-  calendarBody: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "flex-start",
-  },
-  calendarCell: {
-    width: "14%",
-    padding: 5,
-    textAlign: "center",
-    fontSize: 8,
-    backgroundColor: "#222",
-    fontWeight: "bold",
-  },
-  headerCell: {
-    width: "14%",
-    padding: 10,
-    textAlign: "center",
-    fontSize: 8,
-    fontWeight: "bold",
-    backgroundColor: "#333",
-    color: "#fff",
-  },
-  positiveCell: {
-    backgroundColor: "#00FF88", // .calendar-cell.positive
-  },
-  negativeCell: {
-    backgroundColor: "#FF5A5A", // .calendar-cell.negative
-  },
-  greyCell: {
-    backgroundColor: "#aaaaaa", // .calendar-cell.grey
-  },
-  emptyCell: {
-    backgroundColor: "transparent", // .calendar-cell.empty
-  },
-  plValue: {
-    marginTop: 5,
-    fontSize: 12,
   },
 });
 

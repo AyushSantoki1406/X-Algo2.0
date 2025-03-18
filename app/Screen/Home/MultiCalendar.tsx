@@ -95,18 +95,23 @@ const MultiCalendar: React.FC<MultiCalendarProps> = ({
   const getPnlColor = (pnl: number, maxProfit: number, maxLoss: number) => {
     if (pnl > 0) {
       const percentage = (pnl / maxProfit) * 100;
-      if (percentage <= 20) return "#97E097"; // Soft Mint Green
-      else if (percentage <= 40) return "#79DD79"; // Fresh Grass Green
-      else if (percentage <= 60) return "#72D172"; // Rich Forest Green
-      else if (percentage <= 80) return "#5DD05D"; // Deep Emerald Green
-      else return "#31C631"; // Intense Pine Green
+      console.log(pnl);
+      console.log(maxProfit);
+      console.log(percentage);
+      if (percentage <= 20)
+        return "#B8E8B8"; // Very Light Green - better visibility
+      else if (percentage <= 40) return "#8AD98A"; // Light Green
+      else if (percentage <= 60) return "#5CCB5C"; // Medium Green
+      else if (percentage <= 80) return "#2EB82E"; // Strong Green
+      else return "#008000"; // Pure Green - high contrast
     } else if (pnl < 0) {
       const percentage = (pnl / maxLoss) * 100;
-      if (percentage <= -20) return "#FA0000"; // Deepest Red
-      else if (percentage <= -40) return "#FA0000B3"; // Darker Red
-      else if (percentage <= -60) return "#FA0000CC"; // Dark Red
-      else if (percentage <= -80) return "#FA0000B3"; // Medium Red
-      else return "#FA000099"; // Light Red
+      if (percentage <= -20)
+        return "#FFB3B3"; // Very Light Red - better visibility
+      else if (percentage <= -40) return "#FF8080"; // Light Red
+      else if (percentage <= -60) return "#FF4D4D"; // Medium Red
+      else if (percentage <= -80) return "#FF1A1A"; // Strong Red
+      else return "#FF0000"; // Pure Red - high contrast
     }
     return darkMode ? "#222" : "#eee";
   };

@@ -20,6 +20,8 @@ import PaperTrade from "./app/Screen/PaperTrade/PaperTrade";
 import Deployed from "./app/Screen/Strategies/Deployed";
 import Marketplace from "./app/Screen/Strategies/Marketplace";
 import Subscribed from "./app/Screen/Strategies/Subscribed";
+import AddBroker from "./app/Screen/AddBroker/ListOfBroker";
+import Broker from "./app/Screen/AddBroker/Broker";
 
 const Stack = createStackNavigator();
 if (__DEV__) {
@@ -104,6 +106,16 @@ export default function App() {
             <Stack.Screen
               name="Subscribed"
               component={Subscribed}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="AddBroker"
+              component={AddBroker}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Broker"
+              component={Broker}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

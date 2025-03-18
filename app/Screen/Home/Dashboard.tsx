@@ -1,6 +1,12 @@
 // app/Screen/Home/Dashboard.tsx
 import React, { useState, useEffect, useMemo } from "react";
-import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  ScrollView,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -150,53 +156,55 @@ const Dashboard = ({ darkMode = false }) => {
 
   return (
     <SafeAreaView style={[styles.container, darkMode && styles.darkContainer]}>
-      <View style={styles.content}>
-        {/* Header Section */}
-        <View style={styles.headerRow}>
-          <View style={styles.headerColumn}>
-            <View style={styles.headerItem}>
-              <Text style={[styles.headerText, darkMode && styles.darkText]}>
-                P&L
-              </Text>
-              <Text style={[styles.headerValue, darkMode && styles.darkText]}>
-                ₹
-              </Text>
-            </View>
-            <View style={styles.headerItem}>
-              <Text style={[styles.headerText, darkMode && styles.darkText]}>
-                Capital
-              </Text>
-              <Text
-                style={[
-                  styles.headerValue,
-                  totalBalance < 0 ? styles.redText : styles.greenText,
-                  darkMode && styles.darkText,
-                ]}
-              >
-                ₹{totalBalance.toFixed(3)}
-              </Text>
+      <ScrollView>
+        <View style={styles.content}>
+          {/* Header Section */}
+          <View style={styles.headerRow}>
+            <View style={styles.headerColumn}>
+              <View style={styles.headerItem}>
+                <Text style={[styles.headerText, darkMode && styles.darkText]}>
+                  P&L
+                </Text>
+                <Text style={[styles.headerValue, darkMode && styles.darkText]}>
+                  ₹
+                </Text>
+              </View>
+              <View style={styles.headerItem}>
+                <Text style={[styles.headerText, darkMode && styles.darkText]}>
+                  Capital
+                </Text>
+                <Text
+                  style={[
+                    styles.headerValue,
+                    totalBalance < 0 ? styles.redText : styles.greenText,
+                    darkMode && styles.darkText,
+                  ]}
+                >
+                  ₹{totalBalance.toFixed(3)}
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
 
-        {/* Main Content */}
-        {error ? (
-          <View style={styles.errorContainer}>
-            <Text style={[styles.errorText, darkMode && styles.darkText]}>
-              {error}
-            </Text>
-          </View>
-        ) : loader ? (
-          <DashboardAngel capital={capital} darkMode={darkMode} />
-        ) : (
-          <View style={styles.loaderContainer}>
-            <ActivityIndicator
-              size="large"
-              color={darkMode ? "#fff" : "#000"}
-            />
-          </View>
-        )}
-      </View>
+          {/* Main Content */}
+          {error ? (
+            <View style={styles.errorContainer}>
+              <Text style={[styles.errorText, darkMode && styles.darkText]}>
+                {error}
+              </Text>
+            </View>
+          ) : loader ? (
+            <DashboardAngel capital={capital} darkMode={darkMode} />
+          ) : (
+            <View style={styles.loaderContainer}>
+              <ActivityIndicator
+                size="large"
+                color={darkMode ? "#fff" : "#000"}
+              />
+            </View>
+          )}
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -216,7 +224,28 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    paddingVertical: 12,
+    // paddingVertical: 12,
+    // shadowColor: "#000",
+    // shadowOffset: { width: 0, height: 1 },
+    // shadowOpacity: 0.1,
+    // shadowRadius: 2,
+    // elevation: 2,
+    // borderRadius: 8,
+    marginHorizontal: 10,
+    // paddingHorizontal: 10,
+    // borderWidth: 1,
+    // borderColor: "#ddd",
+    padding: 16,
+    borderWidth: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
+    borderRadius: 16,
+    marginTop: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.15,
+    shadowRadius: 15,
+    elevation: 5,
   },
   headerColumn: {
     flexDirection: "row",

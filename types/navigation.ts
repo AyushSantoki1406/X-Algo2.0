@@ -14,5 +14,6 @@ export type StackParamList = {
   Marketplace: undefined;
   Subscribed: undefined;
   Dashboard: { userEmail: string }; // Add this line
-
+  ListOfBroker:undefined
+  Broker:undefined
 };

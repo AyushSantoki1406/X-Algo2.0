@@ -34,7 +34,7 @@ const SlideMenu: React.FC<SlideMenuProps> = ({
     { name: "PaperTrade", icon: "trending-up", screen: "PaperTrade" },
     { name: "Strategies", icon: "settings", screen: "Strategies" },
     { name: "Profile", icon: "person", screen: "Profile" },
-    { name: "Add Broker", icon: "add-business", screen: "AddBroker" },
+    { name: "Add Broker", icon: "add-business", screen: "Broker" },
     { name: "Sign Out", icon: "logout", screen: "SignIn" },
   ];
 
